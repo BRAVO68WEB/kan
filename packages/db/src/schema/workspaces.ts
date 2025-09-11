@@ -2,6 +2,7 @@ import { relations } from "drizzle-orm";
 import {
   bigint,
   bigserial,
+  boolean,
   pgEnum,
   pgTable,
   text,
@@ -98,6 +99,38 @@ export const workspaceMembersRelations = relations(
     }),
   }),
 );
+
+export const workspaceInviteLinks = pgTable("workspace_invite_link", {
+  id: bigserial("id", { mode: "number" }).primaryKey(),
+  workspaceId: bigint("workspaceId", { mode: "number" })
+    .references(() => workspaces.id, { onDelete: "cascade" })
+    .notNull(),
+  inviteCode: varchar("inviteCode", { length: 50 }).notNull().unique(),
+  role: varchar("role", { length: 50 }).notNull().default("member"),
+  isUsed: boolean("isUsed").notNull().default(false),
+  createdBy: uuid("createdBy")
+    .references(() => users.id, { onDelete: "set null" })
+    .notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  expiresAt: timestamp("expiresAt").notNull(),
+  usedAt: timestamp("usedAt"),
+  usedBy: uuid("usedBy").references(() => users.id, { onDelete: "set null" }),
+}).enableRLS();
+
+export const workspaceInviteLinksRelations = relations(workspaceInviteLinks, ({ one }) => ({
+  workspace: one(workspaces, {
+    fields: [workspaceInviteLinks.workspaceId],
+    references: [workspaces.id],
+  }),
+  creator: one(users, {
+    fields: [workspaceInviteLinks.createdBy],
+    references: [users.id],
+  }),
+  user: one(users, {
+    fields: [workspaceInviteLinks.usedBy],
+    references: [users.id],
+  }),
+}));
 
 export const slugs = pgTable("workspace_slugs", {
   slug: varchar("slug", { length: 255 }).notNull().unique(),

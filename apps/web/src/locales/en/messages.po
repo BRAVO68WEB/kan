@@ -13,6 +13,69 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+msgid "Generate Invite Link"
+msgstr "Generate Invite Link"
+
+msgid "Invite Links"
+msgstr "Invite Links"
+
+msgid "Share this invite link with others to join your workspace. The link will expire in the specified number of days."
+msgstr "Share this invite link with others to join your workspace. The link will expire in the specified number of days."
+
+msgid "No active invite links. Generate one to share with others."
+msgstr "No active invite links. Generate one to share with others."
+
+msgid "Invite link deleted"
+msgstr "Invite link deleted"
+
+msgid "The invite link has been deleted successfully."
+msgstr "The invite link has been deleted successfully."
+
+msgid "Error deleting invite link"
+msgstr "Error deleting invite link"
+
+msgid "Error generating invite link"
+msgstr "Error generating invite link"
+
+msgid "Processing your invitation..."
+msgstr "Processing your invitation..."
+
+msgid "Join Workspace"
+msgstr "Join Workspace"
+
+msgid "Click the button below to join the workspace."
+msgstr "Click the button below to join the workspace."
+
+msgid "Sign in or create an account to join the workspace."
+msgstr "Sign in or create an account to join the workspace."
+
+msgid "Expires In (Days)"
+msgstr "Expires In (Days)"
+
+msgid "Generate Link"
+msgstr "Generate Link"
+
+msgid "Link"
+msgstr "Link"
+
+msgid "Expires"
+msgstr "Expires"
+
+msgid "Actions"
+msgstr "Actions"
+
+msgid "Copied"
+msgstr "Copied"
+
+msgid "Copy"
+msgstr "Copy"
+
+msgid "Done"
+msgstr "Done"
+
+msgid "Loading..."
+msgstr "Loading..."
+
 #: src/views/card/components/Comment.tsx:123
 msgid " (edited)"
 msgstr " (edited)"

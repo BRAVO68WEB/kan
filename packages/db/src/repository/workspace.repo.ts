@@ -92,6 +92,19 @@ export const getByPublicId = (db: dbClient, workspacePublicId: string) => {
   });
 };
 
+export const getById = (db: dbClient, id: number) => {
+  return db.query.workspaces.findFirst({
+    columns: {
+      id: true,
+      publicId: true,
+      name: true,
+      slug: true,
+      plan: true,
+    },
+    where: eq(workspaces.id, id),
+  });
+};
+
 export const getByPublicIdWithMembers = (
   db: dbClient,
   workspacePublicId: string,

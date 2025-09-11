@@ -19,6 +19,8 @@ import { useWorkspace } from "~/providers/workspace";
 import { api } from "~/utils/api";
 import { getAvatarUrl } from "~/utils/helpers";
 import { DeleteMemberConfirmation } from "./components/DeleteMemberConfirmation";
+import { GenerateInviteLinkForm } from "./components/GenerateInviteLinkForm";
+import { InviteLinks } from "./components/InviteLinks";
 import { InviteMemberForm } from "./components/InviteMemberForm";
 
 export default function MembersPage() {
@@ -254,6 +256,11 @@ export default function MembersPage() {
           </div>
         </div>
 
+        {/* Add invite links section for admins */}
+        {workspace.role === "admin" && (
+          <InviteLinks />
+        )}
+
         <>
           <Modal
             modalSize="md"
@@ -286,6 +293,13 @@ export default function MembersPage() {
             isVisible={isOpen && modalContentType === "REMOVE_MEMBER"}
           >
             <DeleteMemberConfirmation />
+          </Modal>
+
+          <Modal
+            modalSize="sm"
+            isVisible={isOpen && modalContentType === "GENERATE_INVITE_LINK"}
+          >
+            <GenerateInviteLinkForm />
           </Modal>
         </>
       </div>
